@@ -49,7 +49,10 @@ class FacebookBase : virtual public FacebookServiceIf {
   virtual ~FacebookBase() {}
 
  public:
-  void getName(std::string& _return);
+  inline void FacebookBase::getName(std::string& _return) {
+    _return = name_;
+  }
+
   virtual void getVersion(std::string& _return) { _return = ""; }
 
   virtual fb_status getStatus() = 0;
@@ -59,7 +62,9 @@ class FacebookBase : virtual public FacebookServiceIf {
   void getOption(std::string& _return, const std::string& key);
   void getOptions(std::map<std::string, std::string> & _return);
 
-  int64_t aliveSince();
+  inline int64_t FacebookBase::aliveSince() {
+    return aliveSince_;
+  }
 
   virtual void reinitialize() {}
 

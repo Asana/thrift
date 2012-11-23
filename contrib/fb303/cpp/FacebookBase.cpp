@@ -27,10 +27,6 @@ FacebookBase::FacebookBase(std::string name) :
   aliveSince_ = (int64_t) time(NULL);
 }
 
-inline void FacebookBase::getName(std::string& _return) {
-  _return = name_;
-}
-
 void FacebookBase::setOption(const std::string& key, const std::string& value) {
   Guard g(optionsLock_);
   options_[key] = value;
@@ -116,9 +112,5 @@ int64_t FacebookBase::getCounter(const std::string& key) {
   }
   counters_.release();
   return rv;
-}
-
-inline int64_t FacebookBase::aliveSince() {
-  return aliveSince_;
 }
 
